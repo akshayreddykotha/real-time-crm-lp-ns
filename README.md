@@ -44,7 +44,6 @@ flowchart TD
   I -->|Metric| J["CloudWatch Alarm &gt;2 Messages Visible"]
   J -->|Alarm Action| K[SNS Topic]
   K -->|Notify| L[PagerDuty / Email / On-call]
-
   D -->|Write Enriched Data| E[S3 enriched/]
   D -->|Trigger Notification| F[Notification Lambda]
   F -->|Primary| G[Slack Channel]
