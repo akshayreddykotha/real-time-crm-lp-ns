@@ -40,7 +40,7 @@ flowchart TD
   A[CRM Source Leads] -->|Drop into S3| B[Ingest Lambda]
   B -->|Trigger| C[SQS Queue]
   C -->|Event| D[Enrichment Lambda]
-  C -->|Failures| I[Dead Letter Queue (DLQ)]
+  C -->|Failures| I[Dead Letter Queue]
   I -->|Metric| J[CloudWatch Alarm - more than 2 messages visible]
   J -->|Alarm Action| K[SNS Topic]
   K -->|Notify| L[PagerDuty / Email / On-call]
