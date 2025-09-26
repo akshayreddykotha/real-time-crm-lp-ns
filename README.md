@@ -41,9 +41,10 @@ flowchart TD
   B -->|Trigger| C[SQS Queue]
   C -->|Event| D[Enrichment Lambda]
   C -->|Failures| I[Dead Letter Queue (DLQ)]
-  I -->|Metric| J["CloudWatch Alarm &gt;2 Messages Visible"]
+  I -->|Metric| J["CloudWatch Alarm: more than 2 messages visible"]
   J -->|Alarm Action| K[SNS Topic]
   K -->|Notify| L[PagerDuty / Email / On-call]
+
   D -->|Write Enriched Data| E[S3 enriched/]
   D -->|Trigger Notification| F[Notification Lambda]
   F -->|Primary| G[Slack Channel]
