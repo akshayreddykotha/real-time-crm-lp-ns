@@ -41,7 +41,7 @@ flowchart TD
   B -->|Trigger| C[SQS Queue]
   C -->|Event| D[Enrichment Lambda]
   C -->|Failures| I[Dead Letter Queue (DLQ)]
-  I -->|Metric| J["CloudWatch Alarm (>2 Messages Visible)"]
+  I -->|Metric| J["CloudWatch Alarm &gt;2 Messages Visible"]
   J -->|Alarm Action| K[SNS Topic]
   K -->|Notify| L[PagerDuty / Email / On-call]
 
