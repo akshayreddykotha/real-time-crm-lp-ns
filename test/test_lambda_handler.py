@@ -8,6 +8,7 @@ from processing.lambda_function_v1 import lambda_handler
 
 class TestLambdaHandler(unittest.TestCase):
     @patch("lambda_function.s3")  # mock the s3 client in your module
+    @pytest.mark.unit
     def test_lambda_handler_parses_event_and_reads_s3(self, mock_s3):
         # Arrange
         fake_file_content = {"event": {"lead_id": "lead_123"}}
