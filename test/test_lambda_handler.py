@@ -7,8 +7,7 @@ from processing.lambda_function_v1 import lambda_handler
 
 
 class TestLambdaHandler(unittest.TestCase):
-    @patch("lambda_function.s3")  # mock the s3 client in your module
-    @pytest.mark.unit
+    @patch("processing.lambda_function_v1.s3")  # mock the s3 client in your module
     def test_lambda_handler_parses_event_and_reads_s3(self, mock_s3):
         # Arrange
         fake_file_content = {"event": {"lead_id": "lead_123"}}
@@ -42,7 +41,6 @@ class TestLambdaHandler(unittest.TestCase):
         mock_s3.get_object.assert_called_once_with(
             Bucket="test-bucket", Key="leads/lead_123.json"
         )
-        # no assertion on print, but you could patch "builtins.print" if you want to check logs
 
 
 if __name__ == "__main__":

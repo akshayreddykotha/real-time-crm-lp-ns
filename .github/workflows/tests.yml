@@ -2,32 +2,25 @@ name: Run Unit Tests
 
 on:
   push:
-    branches:
-      - main
+    branches: [main]
   pull_request:
+    branches: [main]
 
 jobs:
   test:
     runs-on: ubuntu-latest
 
     steps:
-      # 1. Checkout repository
-      - name: Checkout repo
+      - name: Checkout repository
         uses: actions/checkout@v3
 
-      # 2. Set up Python
       - name: Set up Python
         uses: actions/setup-python@v4
         with:
-          python-version: '3.11'
+          python-version: "3.13"
 
-      # 3. Install dependencies
       - name: Install dependencies
-        run: |
-          python -m pip install --upgrade pip
-          pip install pytest boto3 moto
+        run: pip install boto3
 
-      # 4. Run unit tests (with AWS mocked)
       - name: Run unit tests
-        run: |
-          pytest test/ --maxfail=1 --disable-warnings -q -m unit
+        run: python -m unittest discover -s test/ -p "test_*.py"
