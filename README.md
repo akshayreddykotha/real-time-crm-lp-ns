@@ -1,3 +1,5 @@
+[![Run Unit Tests](https://github.com/akshayreddykotha/real-time-crm-lp-ns/actions/workflows/tests.yml/badge.svg)](https://github.com/akshayreddykotha/real-time-crm-lp-ns/actions/workflows/tests.yml)
+
 # Real-Time CRM Lead Processing and Notification System
 
 This project implements an **event-driven lead processing and notification pipeline** on AWS. It ingests leads from a CRM, enriches them, and sends notifications to downstream consumers (Slack, SES) in real time. The solution is designed for reliability, observability, and extensibility.
